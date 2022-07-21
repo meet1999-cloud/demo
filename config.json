@@ -1,0 +1,6 @@
+{
+  "username": "root",
+  "password": "password123",
+  "database" : "alchemy",
+  "host": "3306"
+}

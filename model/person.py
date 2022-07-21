@@ -30,29 +30,23 @@ class Person(Base):
     DOB = Column(Date())
 
 
-# def add_column(engine, table_name, column):
-#     column_name = column.compile(dialect=engine.dialect)
-#     column_type = column.type.compile(engine.dialect)
-#     engine.execute('ALTER TABLE %s ADD COLUMN %s %s' % (table_name, column_name, column_type))
-#
-#
-# column = Column('firstname', String(50), primary_key=True)
-# column1 = Column('lastname', String(50))
-# column2 = Column('PhoneNumber', Numeric(10))
-# column3 = Column('Email', String(50))
-# column4 = Column('DOB', (Date()))
-#
-# add_column(engine=engine, table_name='person', column=column1)
-# add_column(engine=engine, table_name='person', column=column2)
-# add_column(engine=engine, table_name='person', column=column3)
-# add_column(engine=engine, table_name='person', column=column4)
-
 class Student1(Base):
     __tablename__ = 'student1'
     id = Column(Integer, primary_key=True)
     RollNo = Column(Integer(), primary_key=True)
     Batch = Column(Integer())
+    level5 = Column(Integer())
     person_id = Column(Integer, ForeignKey("person.id"))
+    enrolled_id = Column(Integer, ForeignKey("enrolled.id"))
+
+
+def my_var(engine, table_name, column):
+    column_name = column.compile(dialect=engine.dialect)
+    column_type = column.type.compile(engine.dialect)
+    engine.execute('ALTER TABLE %s ADD COLUMN %s %s' % (table_name, column_name, column_type))
+
+
+column = Column('level6', Integer, primary_key=True)
 
 
 class Teacher(Base):
@@ -60,7 +54,7 @@ class Teacher(Base):
     id = Column(Integer, primary_key=True)
     Salary = Column(Integer())
     Employeeid = Column(Integer(), primary_key=True)
-    DOJ = Column(Integer())
+    DOJ = Column(Integer)
     student1_id = Column(Integer, ForeignKey("student1.id"))
 
 
@@ -71,7 +65,7 @@ class Address(Base):
     City = Column(String(50))
     PostalCode = Column(Integer())
     Country = Column(String(50))
-    person_id = Column(Integer, ForeignKey("person.id"))
+    # person_id = Column(Float, ForeignKey("person.id"))
 
 
 Base.metadata.create_all(engine)
