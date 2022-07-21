@@ -44,4 +44,3 @@ def enrolled_user(enrolleed_Date, enrolledcourse_Id, enrolledstudent1_id):
 
 
 enrolled_user('2004-1-06', '6', '5')
-
