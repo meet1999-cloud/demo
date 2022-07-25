@@ -11,7 +11,4 @@ def task():
     port = data['host']
 
 
-
-    cnx = create_engine("mysql+pymysql://" + user + ":" + password + "@localhost:" + port + "/" + db + "?charset=utf8mb4")
-
-    return cnx
+    engine = create_engine("mysql+pymysql://" + user + ":" + password + "@localhost:" + port + "/" + db + "?charset=utf8mb4")
