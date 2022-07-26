@@ -1,6 +1,8 @@
+from asyncio.log import logger
 import json
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+import logging
 from connect import engine
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -13,7 +15,7 @@ def course_user(course_course_id, course_title, course_level, course_credits, co
         course_total,
         courseteacher_id)
 
-    print(query)
+    logger.info(query)
     engine.execute(query)
 
 
